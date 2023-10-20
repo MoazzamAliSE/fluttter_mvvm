@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm/locator.dart';
+import 'package:flutter_mvvm/router.dart';
+import 'package:flutter_mvvm/ui/view/login_view.dart';
 import 'package:flutter_mvvm/ui/view/startup_view.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +12,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await setUpLocator();
+
   runApp(const MyApp());
 }
 
@@ -21,7 +26,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MVVM',
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: const StartUpView(),
+      onGenerateRoute: AppRouter.generateRoute,
+      home: StartUpView(),
     );
   }
 }

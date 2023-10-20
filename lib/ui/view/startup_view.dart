@@ -16,11 +16,11 @@ class StartUpView extends StatelessWidget {
         ),
       ),
       onModelReady: (model) {
-        model
-            .onModelReady()
-            .then((value) => Navigator.of(context).pushReplacementNamed(
-                  value ? HomeView.id : LoginView.id,
-                ));
+        model.onModelReady().then(
+              (value) => Navigator.of(context).pushReplacementNamed(
+                value ? HomeView.id : LoginView.id,
+              ),
+            );
       },
     );
   }
